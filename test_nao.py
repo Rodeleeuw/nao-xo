@@ -19,5 +19,5 @@ tts.setVolume(0.9)  ##Volume set to 90%
 tts.setParameter("pitchShift", 1.2) #Applies a pitch shifting to the voice
 tts.setParameter("doubleVoice", 0.0) #Deactivates double voice
 
-tts.say("Hiya. My name is NAO")
-tts.say("Bye-bye")
+tts.say("get me a coffee ")
+

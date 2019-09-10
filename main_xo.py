@@ -19,24 +19,24 @@ import sys
 import time
 
 if __name__ == '__main__':
-    
+
     ## parse input arguments
     parser = OptionParser()
-    parser.add_option("-i", "--ip", help="Robot IP", dest="ip", default="edith.local")
+    parser.add_option("-i", "--ip", help="Robot IP", dest="ip", default="192.168.0.102")
     parser.add_option("-p", "--port", help="Port to connect to NaoQi", dest="port", type="int", default=9559)
     (opts, args_) = parser.parse_args()
     ip = opts.ip
     port = opts.port
-    
+
     print("Connecting to robot on {}:{}".format(ip, port))
 
     ## play the game
     player = []
-    
+    #import pdb; pdb.set_trace()
     try:
         ## create player
         player = NaoXO(ip, port)
-        
+
         ## initialize robot stance
         player.stanceInit()
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             sys.exit()
         print('Initialized game!!!')
         time.sleep(2)
-        
+
         ## play the game
         while True:
             if not player.play():
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         player=[]
         sys.exit()
 
-    ## catch all errors        
+    ## catch all errors
     except:
         ## if player was created, do cleanup
         if player:
