@@ -61,7 +61,7 @@ class NaoXO():
             to see what is possible. In this case the return proxy object is assigned to a member variable
             of the NaoXO class
         """
-        #import pdb; pdb.set_trace()
+        logger.info('Creating NaoXo class ..')
         self.motion = ALProxy("ALMotion", IP, PORT)
         self.memory = ALProxy("ALMemory", IP, PORT)
         self.behavior = ALProxy("ALBehaviorManager", IP, PORT)
