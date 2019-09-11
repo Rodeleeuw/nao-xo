@@ -27,11 +27,11 @@ file_handler = logging.FileHandler('logs/main_xo.log')
 file_handler.setLevel(logging.DEBUG)
 file_handler.setFormatter(formatter)
 
-stream_handler = logging.StreamHandler()
-stream_handler.setFormatter(formatter)
+#stream_handler = logging.StreamHandler()
+#stream_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
-logger.addHandler(stream_handler)
+#logger.addHandler(stream_handler)
 
 # logger.debug('Add: {} + {} = {}'.format(num_1, num_2, add_result))
 
