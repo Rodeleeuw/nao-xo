@@ -7,22 +7,16 @@ As of 18.3.2014.
 
 ## import ALProxy to connect to Naoqi on the robot
 from naoqi import ALProxy
-
 ## import numpy for matrix operations and OpenCV
 import numpy as np
-
 ## import OpenCV for visualization
 import cv2
-
 ## import definitions for xo class
 from naoxo_definitions import *
-
 ## import image processing module
 import imgproc_xo as img
-
 ## import NAO vision definitions for image grabbing
 from vision_definitions import kVGA, kBGRColorSpace
-
 ## import time module
 import time
 
@@ -32,6 +26,19 @@ from pobjeda import pobjeda
 from krizic_kruzic_strategija import strategija_x
 from krizic_kruzic_strategija import strategija_o
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler('logs/nao_xo.log')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+
+# logger.info('Created Employee: {} - {}'.format(self.fullname, self.email))
 
 class NaoXO():
     '''
@@ -56,6 +63,7 @@ class NaoXO():
         self.videoProxy = ALProxy("ALVideoDevice", IP, PORT)
         self.awareness = ALProxy("ALBasicAwareness", IP, PORT)
         self.posture = ALProxy("ALRobotPosture", IP, PORT)
+        logger.info('AL modules initiallized')
 
         ## set video parameters
         ## select bottom camera

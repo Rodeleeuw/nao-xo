@@ -9,14 +9,31 @@ As of 18.3.2014.
 
 ## import nao_xo class
 from nao_xo import NaoXO
-
 ## import option parser
 from optparse import OptionParser
-
 ## import sys
 import sys
 
 import time
+
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler('logs/main_xo.log')
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
+
+# logger.debug('Add: {} + {} = {}'.format(num_1, num_2, add_result))
 
 if __name__ == '__main__':
 
@@ -37,28 +54,28 @@ if __name__ == '__main__':
         ## create player
         player = NaoXO(ip, port)
 
-        ## initialize robot stance
-        player.stanceInit()
+        # ## initialize robot stance
+        # player.stanceInit()
 
-        ## initialize game, if the game does not start then exit
-        if not player.gameInit():
-            player.cleanup()
-            player=[]
-            sys.exit()
-        print('Initialized game!!!')
-        time.sleep(2)
+        # ## initialize game, if the game does not start then exit
+        # if not player.gameInit():
+        #     player.cleanup()
+        #     player=[]
+        #     sys.exit()
+        # print('Initialized game!!!')
+        # time.sleep(2)
 
-        ## play the game
-        while True:
-            if not player.play():
-                ## Game is over
-                ## TODO: ask if the opponent wants a rematch
-                break
+        # ## play the game
+        # while True:
+        #     if not player.play():
+        #         ## Game is over
+        #         ## TODO: ask if the opponent wants a rematch
+        #         break
 
-        ## cleanup
-        player.cleanup()
-        player=[]
-        sys.exit()
+        # ## cleanup
+        # player.cleanup()
+        # player=[]
+        # sys.exit()
 
     ## catch all errors
     except:
